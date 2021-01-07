@@ -1,12 +1,4 @@
----
-title: "Weather App"
----
-
 # Weather App
-
-## Table of Contents
-
-[TOC]
 
 ## About the App
 

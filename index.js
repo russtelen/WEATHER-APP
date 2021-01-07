@@ -16,6 +16,9 @@ app.use(express.json()); // JSON
 //Setting up the views directory
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "/views"));
+
+// API KEY
+const API_KEY = process.env.API_KEY;
 // ==============================================
 // ROUTES
 // get
@@ -23,6 +26,31 @@ app.get("/", (req, res) => {
   res.render("index");
 });
 
+// post
+app.post("/", (req, res) => {
+  const { city, countryCode } = req.body;
+  const URL = `https://api.openweathermap.org/data/2.5/weather?q=${city},${countryCode}&appid=${API_KEY}&units=metric`;
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    },
+  };
+
+  function getWeatherData() {
+    return axios.get(URL, config).then((response) => response.data);
+  }
+  let weatherData = getWeatherData();
+  weatherData.then((result) => {
+    console.log(result);
+
+    if (result) {
+      res.render("weather", { ...result });
+    } else {
+      res.redirect("/");
+    }
+  });
+});
 // ==============================================
 // LISTEN
 app.listen(5000, () => {

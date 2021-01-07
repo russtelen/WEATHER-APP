@@ -17,8 +17,6 @@ app.use(express.json()); // JSON
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "/views"));
 
-// API KEY
-const API_KEY = process.env.API_KEY;
 // ==============================================
 // ROUTES
 // get
@@ -29,7 +27,8 @@ app.get("/", (req, res) => {
 // post
 app.post("/", (req, res) => {
   const { city, countryCode } = req.body;
-  const URL = `https://api.openweathermap.org/data/2.5/weather?q=${city},${countryCode}&appid=${API_KEY}&units=metric`;
+  const APIKey = process.env.API_KEY;
+  const URL = `https://api.openweathermap.org/data/2.5/weather?q=${city},${countryCode}&appid=${APIKey}&units=metric`;
   const config = {
     headers: {
       "Content-Type": "application/json",

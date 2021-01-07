@@ -2,8 +2,9 @@
 
 ## About the App
 
-    Weather app that displays the weather of serached city.
-    It is server side rendered built with NodeJS, Express and EJS. OpenWeather API was used to fetch data.
+    A simple weather app that displays the weather of searched city.
+    It is server side rendered built with NodeJS,
+    Express and EJS. OpenWeather API was used to fetch data.
 
 ## Run app
 
@@ -14,3 +15,5 @@
     5. Enjoy
 
 ## App Preview
+
+![app preview](public/weatherapp.gif)

@@ -20,7 +20,7 @@ app.set("views", path.join(__dirname, "/views"));
 // ROUTES
 // get
 app.get("/", (req, res) => {
-  res.send("connected!");
+  res.render("index");
 });
 
 // ==============================================
